@@ -1,0 +1,5 @@
+Compile todas las clases.
+Solo necesita ejecutar ZipServer.class que será el servidor que reciba, lea y escriba mensajes.
+El cliente puede ser ZipClient.class  o FreeClient.class.
+ZipClient.class enviará mensajes legitimos para el servidor, correspondan a un Observador de registros o un Actualizador de medición, agregando el checksum.
+FreeClient.class puede enviar cualquier mensaje, y al final agrega el checksum.
