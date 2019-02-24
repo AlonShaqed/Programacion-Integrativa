@@ -89,11 +89,19 @@ public class Codificador
 		message+=sensor;
 
 		do{
-			data="0";
+			data="";
 			System.out.println("Dato (flotante < 8 caracteres):");
 			data=getReadLine(data);
+			try{
+				Float.valueOf(data);
+			}
+			catch(NumberFormatException e)
+			{
+				System.out.println("El dato no es numero flotante");
+				data="ERROR";
+			}
 			data=completeBytesOf("0",data, 8);
-		}while(data=="ERROR");
+		}while(data.contains("ERROR"));
 		message+=data;
 
 		message+=completeBytesOf("0",Integer.toString(date.get(Calendar.HOUR_OF_DAY)),2)+
@@ -103,6 +111,24 @@ public class Codificador
 		message+=completeBytesOf("0",Integer.toString(date.get(Calendar.DAY_OF_MONTH)),2)+
 			completeBytesOf("0",Integer.toString(date.get(Calendar.MONTH)+1),2)+
 			completeBytesOf("0",Integer.toString(date.get(Calendar.YEAR)),4);
+
+		message+=completeBytesOf("0",Integer.toString(checkSum(message, 0)),4);
+
+		return message;
+	}
+
+	public static String codeSMFromLog(String log)
+	{
+		if(log.contains("No encontrado") || log.contains("ERROR"))
+			return "ERROR";
+
+		String message="u";
+		String[] pack=log.split(",");
+
+		message+=completeBytesOf(" ", pack[0], 8);
+		message+=completeBytesOf("0", pack[1], 8);
+		message+=pack[2].replaceAll(":", "");
+		message+=pack[3].replaceAll("-", "");
 
 		message+=completeBytesOf("0",Integer.toString(checkSum(message, 0)),4);
 
