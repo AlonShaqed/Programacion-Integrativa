@@ -28,7 +28,7 @@ public class ZipClient
 		    byte[] buffer = new byte[255];
 		    dis.read(buffer,0,64);
 		    String st = new String (buffer);
-		    System.out.println("Server: ["+st+"]");
+		    //System.out.println("Server: ["+st+"]");
 
 		    // When done, just close the connection and exit
 		    dis.close();
@@ -37,7 +37,7 @@ public class ZipClient
 		    s1In.close();
 		    s1.close();
 
-			return st;
+			return st=st.substring(0, st.indexOf(0));
 		}
 		catch(IOException e)
 		{
@@ -67,7 +67,16 @@ public class ZipClient
 			System.out.println("Sending...");
 			zipClientSocket(args[0],args[1], message);
 			if(message.charAt(0)=='r')
-				zipClientSocket(args[0],args[1], "Wait message");
+			{
+				String got=zipClientSocket(args[0],args[1], "Wait message");
+				System.out.println("got.length: "+got.length());
+				String [] get=Decodificador.decode(got);
+
+				System.out.println("Log: [");
+		        for(int i=0; i<get.length;i++)
+		        	System.out.println(get[i]);
+		        System.out.println("\t]\n");
+			}
 		}while(message!="Exit");
 	}
 }
