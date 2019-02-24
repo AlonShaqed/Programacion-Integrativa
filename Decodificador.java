@@ -1,4 +1,4 @@
-public class Decodificador
+public class Decodificador //revisar el nombre del sensor vacio; agregar numeric exception en el checksum
 {
 	public static String trimMessage(String message)
 	{
@@ -31,6 +31,8 @@ public class Decodificador
 						if(message.length()==35)
 						{
 							update[0]="data.csv";
+							if(message.substring(1,9).trim().length()==0)
+								throw new RuntimeException("Nombres vacios");
 							update[1]=message.substring(1,9).trim();
 							try{
 								if(message.contains("-"))
@@ -57,7 +59,11 @@ public class Decodificador
 						if(message.length()==21)
 						{
 							review[0]="transactionLog.csv";
+							if(message.substring(1,9).trim().length()==0)
+								throw new RuntimeException("Nombres vacios");
 							review[1]=message.substring(1,9).trim();
+							if(message.substring(9,17).trim().length()==0)
+								throw new RuntimeException("Nombres vacios");
 							review[2]=message.substring(9,17).trim();
 
 							return review;
@@ -71,7 +77,6 @@ public class Decodificador
 		{
 			System.out.println("Message Discarded:\n"+e.getMessage());
 		}
-
 		return devoided;
 	}
 
