@@ -35,10 +35,11 @@ public class Decodificador
 							try{
 								if(message.contains("-"))
 									data="-"+message.substring(9,17).replaceFirst("-","");
+								else data=message.substring(9,17);
 								Float.parseFloat(data);
+								Integer.parseInt(message.substring(17,23));
+								Integer.parseInt(message.substring(23,31));
 								update[2]=data;
-								Integer.parseInt(message.substring(17,27));
-								Integer.parseInt(message.substring(27,31));
 								update[3]=message.substring(17,19)+":"+message.substring(19,21)+":"+message.substring(21,23);
 								update[4]=message.substring(23,25)+"-"+message.substring(25,27)+"-"+message.substring(27,31);
 
@@ -47,6 +48,7 @@ public class Decodificador
 							catch(NumberFormatException e)
 							{
 								System.out.println("Error en datos numericos");
+								System.out.println(e.getMessage());
 
 								return devoided;
 							}
