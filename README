@@ -1,5 +1,50 @@
-Compile todas las clases.
-Solo necesita ejecutar ZipServer.class que será el servidor que reciba, lea y escriba mensajes.
-El cliente puede ser ZipClient.class  o FreeClient.class.
-ZipClient.class enviará mensajes legitimos para el servidor, correspondan a un Observador de registros o un Actualizador de medición, agregando el checksum.
-FreeClient.class puede enviar cualquier mensaje, y al final agrega el checksum.
+#Zip Server & ZipClient#
+/Descripcion/ [ES]
+Ambos programas se comunican a traves de un socket. El servidor (ZipServer.java) recibe mensajes codificados del cliente y registra la información en logs en formato CSV. Si el cliente solicita un log de un sensor, el servidor enviará el paquete del último dato de dicho sensor solicitado
+
+El cliente (ZipClient.java) puede enviar mensajes codificados, sean para la actualización y consulta de datos en los logs del archivo CSV.
+
+/Description/
+Both programs comunicate through a socket. The server (ZipServer.java) gets coded messages from the client and writes the data in CSV logs. If the client requests a log query, the server will send the last log of the requested sensor.
+
+The client (ZipClient.java) sends coded messages, either updates or queries to data in the CSV logs.
+
+/Funcionamiento/
+Compile todos los programas (*.java) [NOTA: el programa fue probado en java 11.0.2] en las máquinas en las que se va a implementar e sistema. Ejecute en terminal la clase "ZipServer.class [args[0]]" en la máquina que actuará como servidor. El programa toma un argumento, que corresponde al número de puerto, que será el único en el tiempo de ejecución del programa.
+
+Ejecute la clase "ZipClient.class [args[0]] [args[1]]" en la máquina cliente. El programa toma dos argumentos, el nombre o dirección de red (puede ser 'localhost') y el número puerto. Ambos deben corresponder a los del servidor, y se usará un solo puerto el tiempo de ejecución.
+
+El cliente despliega un menú. Existen tres opciones:
+    1. Sensor
+    2. Observador
+    3. Salir
+
+La opción de sensor (1) lo llevará a un menú dónde ingresará el número (2 bytes) del sensor y  el dato (8 bytes). En ambos casos, solo caben 8 bytes. La hora y la fecha se agregarán automáticamente.
+
+La opción de observador (2) lo llevará a un menú donde solicitará el nombre del cliente (8 bytes) y el número de sensor a consultar (2 bytes). El cliente desplegará el último registro de dicho sensor, si existe.
+
+La opción salir (3) terminará el programa.
+
+/How it works/
+Compile all programs (*.java) [WARNING: the program was tested in java 11.0.2] in the machines it willbe tested. Run in terminal the class "ZipServer [args[0]]" in the server machine. This program takes one  argument, that indicates the port number, which is the only one employed in runtime.
+
+Run the class "ZipClient [args[0]] [args[1]]" in the client machine. This program takes two arguents, the hostname or host adress, and the port number. Both shall be the ones of the server, and the only ones employed in runtime.
+
+The client will show a menu with 3 options:
+    1. Sensor
+    2. Observer
+    3. Exit
+
+The sensor option (1) leads to a menu in which the user will input the sensor number (2 bytes) and the data (8 bytes). In both cases, limit is 8 bytes total. Time & date will be add automatically.
+
+Option (2), observer will lead you in which will request the client's name (8 bytes) and the sensor number (2 bytes). The client shows the last record of the requested sensor, if exists.
+
+Third option (3) exit, will end runtime.
+
+/Notas/
+El programa usa padding al lado izquierdo. Los datos de cadena usan padding de espacios " " y los numericos de "0".
+ZipClient solo puede actualizar sensores con el nombre "sensor##", pero ZipServer puede leer cualquier nombre de menos de 8 byts.
+
+/Notes/
+The program applies left padding. String data has spaces " " padding and Numeric data "0" padding.
+ZipClient can only update sensor with "sensor##" format names, but ZipServer will recognize any name within limits of 8 bytes.
