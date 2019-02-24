@@ -117,7 +117,7 @@ public class ZipServer
 		        System.out.println("Writing: [");
 		        for(int i=0; i<get.length;i++)
 		        	System.out.println(get[i]);
-		        System.out.println("]\n");
+		        System.out.println("\t]\n");
 
 		        if(get.length>1)
 		        {
@@ -128,7 +128,8 @@ public class ZipServer
 		        		write+=j==get.length-1?get[j]:get[j]+",";
 
 		        	if(get.length==3)
-		        		if(loopZipServerSocket(t, Files.findLastInCSV("data.csv", get[2]+","))=="ERROR")
+		        		if(loopZipServerSocket(t,
+		        		Codificador.codeSMFromLog(Files.findLastInCSV("data.csv", get[2]+",")))=="ERROR")
 		        			doit=false;
 
 		       		if(doit)
