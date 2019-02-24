@@ -69,7 +69,6 @@ public class ZipClient
 			if(message.charAt(0)=='r')
 			{
 				String got=zipClientSocket(args[0],args[1], "Wait message");
-				System.out.println("got.length: "+got.length());
 				String [] get=Decodificador.decode(got);
 
 				System.out.println("Log: [");
