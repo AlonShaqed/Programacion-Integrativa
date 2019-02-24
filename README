@@ -26,7 +26,7 @@ ZipClient solo puede actualizar sensores con el nombre "sensor##", pero ZipServe
 
 ################################################################################################################################################
 /Description/ [EN]
-Both programs comunicate through a socket. The server (ZipServer.java) gets coded messages from the client and writes the data in CSV logs. If the client requests a log query, the server will send the last log of the requested sensor.
+Both programs communicate through a socket. The server (ZipServer.java) gets coded messages from the client and writes the data in CSV logs. If the client requests a log query, the server will send the last log of the requested sensor.
 
 The client (ZipClient.java) sends coded messages, either updates or queries to data in the CSV logs.
 
