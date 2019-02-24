@@ -13,8 +13,7 @@ public class Decodificador
 		String [] update={"", "", "", "", ""};
 		String [] review={"", "", ""};
 		String [] devoided={"Error in message"};
-
-		System.out.println("Decoder:"+message);
+		String data="";
 
 		try{
 			int messageChecksum=Integer.parseInt(message.substring(message.length()-4));
@@ -33,11 +32,24 @@ public class Decodificador
 						{
 							update[0]="data.csv";
 							update[1]=message.substring(1,9).trim();
-							update[2]=message.substring(9, 17);
-							update[3]=message.substring(17,19)+":"+message.substring(19,21)+":"+message.substring(21,23);
-							update[4]=message.substring(23,25)+"-"+message.substring(25,27)+"-"+message.substring(27,31);
+							try{
+								if(message.contains("-"))
+									data="-"+message.substring(9,17).replaceFirst("-","");
+								Float.parseFloat(data);
+								update[2]=data;
+								Integer.parseInt(message.substring(17,27));
+								Integer.parseInt(message.substring(27,31));
+								update[3]=message.substring(17,19)+":"+message.substring(19,21)+":"+message.substring(21,23);
+								update[4]=message.substring(23,25)+"-"+message.substring(25,27)+"-"+message.substring(27,31);
 
-							return update;
+								return update;
+							}
+							catch(NumberFormatException e)
+							{
+								System.out.println("Error en datos numericos");
+
+								return devoided;
+							}
 						}
 					case 'r':
 						if(message.length()==21)
