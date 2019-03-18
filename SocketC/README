@@ -1,0 +1,49 @@
+#Zip Server & ZipClient#
+/Descripcion/ [ES]
+Ambos programas se comunican a traves de un socket. El servidor (zipserver.cpp) recibe mensajes codificados del cliente y registra la información en logs en formato CSV. Si el cliente solicita un log de un sensor, el servidor enviará el paquete del último dato de dicho sensor solicitado
+
+El cliente (zipclient.cpp) puede enviar mensajes codificados, sean para la actualización y consulta de datos en los logs del archivo CSV.
+
+/Funcionamiento/ --------------------------------------------------------------------------------------------------------------------------------
+Compile los programas zipclient.cpp y zipserver.cpp en las máquinas en las que se va a implementar e sistema. Ejecute en terminal el ejecutable de zipserver "./<ejecutable> [argv[1]]" en la máquina que actuará como servidor. El programa toma un argumento, que corresponde al número de puerto, que será el único en el tiempo de ejecución del programa.
+
+Ejecute el ejecutable de zipclient "./<ejecutable> [argv[1]] [argv[2]]" en la máquina cliente. El programa toma dos argumentos, el nombre o dirección de red (puede ser 'localhost') y el número puerto. Ambos deben corresponder a los del servidor, y se usará un solo puerto el tiempo de ejecución.
+
+El cliente despliega un menú. Existen tres opciones:
+    1. Sensor
+    2. Observador
+    3. Salir
+
+La opción de sensor (1) lo llevará a un menú dónde ingresará el nombre (8 bytes) del sensor y  el dato (8 bytes). En ambos casos, solo caben 8 bytes. La hora y la fecha se agregarán automáticamente.
+
+La opción de observador (2) lo llevará a un menú donde solicitará el nombre del cliente (8 bytes) y el nombre de sensor a consultar (8 bytes). El cliente desplegará el último registro de dicho sensor, si existe.
+
+La opción salir (3) terminará el programa.
+
+/Notas/ -----------------------------------------------------------------------------------------------------------------------------------------
+El programa usa padding al lado izquierdo. Los datos de cadena usan padding de espacios " " y los numericos de "0".
+
+################################################################################################################################################
+/Description/ [EN]
+Both programs comunicate through a socket. The server (ZipServer.java) gets coded messages from the client and writes the data in CSV logs. If the client requests a log query, the server will send the last log of the requested sensor.
+
+The client (ZipClient.java) sends coded messages, either updates or queries to data in the CSV logs.
+
+/How it works/ ----------------------------------------------------------------------------------------------------------------------------------
+Compile zipclient.cpp & zipserver.cpp in the machines it willbe tested. Run in terminal the compiled file of zipserver "./<exe> [argv[1]]" in the server machine. This program takes one  argument, that indicates the port number, which is the only one employed in runtime.
+
+Run the compiled file of zipclient "./<exe> [args[0]] [args[1]]" in the client machine. This program takes two arguents, the hostname or host adress, and the port number. Both shall be the ones of the server, and the only ones employed in runtime.
+
+The client will show a menu with 3 options:
+    1. Sensor
+    2. Observer
+    3. Exit
+
+The sensor option (1) leads to a menu in which the user will input the sensor name (8 bytes) and the data (8 bytes). In both cases, limit is 8 bytes total. Time & date will be add automatically.
+
+Option (2), observer will lead you in which will request the client's name (8 bytes) and the sensor name (8 bytes). The client shows the last record of the requested sensor, if exists.
+
+Third option (3) exit, will end runtime.
+
+/Notes/ -----------------------------------------------------------------------------------------------------------------------------------------
+The program applies left padding. String data has spaces " " padding and Numeric data "0" padding.
