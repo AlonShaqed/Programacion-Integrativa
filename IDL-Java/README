@@ -1,0 +1,15 @@
+#RMI#
+--Log.java: Abstract
+--LogImpl: Server, Servant
+--RMIClient: Cliente
+
+#Instrucciones#
+
+>idlj -fall Log.idl
+
+>javac *.java
+
+>orbd -ORBInitialPort 1070 -ORBInitialHost localhost
+>java LogServer -ORBInitialPort 1900 -ORBInitialHost localhost
+>java LOgClient -ORBInitialPort 1900 -ORBInitialHost localhost
+

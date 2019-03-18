@@ -1,0 +1,5 @@
+interface LogService
+{
+	string createLog(in string sensor, in float data);
+	string getLastLogOf(in string observer, in string sensor);
+};
