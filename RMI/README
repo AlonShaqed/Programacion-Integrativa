@@ -1,0 +1,10 @@
+#RMI#
+--Log.java: Abstract
+--LogImpl: Server, Servant
+--RMIClient: Cliente
+
+#Instrucciones#
+Copile todos los archivos (javac -Xlint *.java)
+Ejectue rmiregistry en el dispatcher
+Ejecute LogImpl en el servidor (rmic LogImpl & java LogImpl)
+Ejecute el cliente (java RMIClient)
