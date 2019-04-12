@@ -17,6 +17,7 @@ def stringChecksum(string):
 
 def padding(token, string, bytes_):
 	padding = ""
+	places = 0
 	if type(token) is type("") and type(bytes_) is type(0) and type(string) is type(""):
 		places = bytes_ - len(string)
 		if(places >= 0):
@@ -72,11 +73,10 @@ def codeFromLog(log, b=[8,8,6,8]):
 		parts[-2] = parts[-2].replace(":", "")
 
 		for i in range(len(parts)):
-			print(parts[i])
 			parts[i] = padding(" ", parts[i].lower().strip(), b[i])
-			print(parts[i])
 
 		for part in parts:
 			code += part
+		code += str(padding("0", stringChecksum(code), 4))
 
 		return code
