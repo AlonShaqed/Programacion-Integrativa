@@ -5,7 +5,7 @@ Ambos programas se comunican a traves de un socket. El servidor (server.py) reci
 El cliente (main.py << client.py) puede enviar mensajes codificados, sean para la actualización y consulta de datos en los logs del archivo CSV.
 
 /Funcionamiento/ --------------------------------------------------------------------------------------------------------------------------------
-Ejecute el servidor en Python 3 (python<python3 en Linux> server.py). Si necesita cambiar la dirección o el puerto, cambielos dentro del código del (server.py & client.py). Después, ejecute el cliente en Python3. ADVERTENCIA: EL cliente requiere el complemento de AppJar (pip<pip3> install appjar o descargarlo de la página http://www.apjar.info y pasar el descomprimido dentro del mismo directorio del programa). La interfaz le mostrar las entradas de texto para insertar lo solicitado.
+Ejecute el servidor en Python 3 (python<python3 en Linux> server.py). Si necesita cambiar la dirección o el puerto, cambielos dentro del código del (server.py & client.py). Después, ejecute el cliente en Python3. ADVERTENCIA: EL cliente requiere el complemento de AppJar (pip<pip3> install appjar o descargarlo de la página http://appjar.info/ y pasar el descomprimido dentro del mismo directorio del programa). La interfaz le mostrar las entradas de texto para insertar lo solicitado.
 
 /Notas/ -----------------------------------------------------------------------------------------------------------------------------------------
 El programa usa padding al lado izquierdo. Los datos de cadena usan padding de espacios " " y los numericos de "0".
@@ -17,7 +17,7 @@ Both programs comunicate through sockets. Server (server.py) receives codified m
 Client (main.py << client.py) can send codified messages, to update or query from CSV logs file.
 
 /Funcionamiento/ --------------------------------------------------------------------------------------------------------------------------------
-Execute the server with Python 3 (python<python3 on Linux> server.py). If you need to change the socket's port or address change in code (server.py & client.py). Then execute the client in Python 3. WARNING: Client needs AppJar package (pip<pip3> install appjar or download http://www.apjar.info and extract in the same folder as the program). The interface will show what to do.
+Execute the server with Python 3 (python<python3 on Linux> server.py). If you need to change the socket's port or address change in code (server.py & client.py). Then execute the client in Python 3. WARNING: Client needs AppJar package (pip<pip3> install appjar or download http://appjar.info/ and extract in the same folder as the program). The interface will show what to do.
 
 /Notas/ -----------------------------------------------------------------------------------------------------------------------------------------
 Program works with left padding. strings have blanks " " and numeric have nulls "0".
