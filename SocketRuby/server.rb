@@ -1,6 +1,6 @@
 require 'socket'
 load 'decode.rb'
-load 'csv.rb'
+load 'my_csv.rb'
 
 $server = TCPServer.new 2000 # Server bound to port 2000
 
