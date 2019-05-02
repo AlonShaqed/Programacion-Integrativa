@@ -1,0 +1,23 @@
+#RbServer & RbClient#
+/Descripcion/ [ES]
+Ambos programas se comunican a traves de un socket. El servidor (server.rb) recibe mensajes codificados del cliente y registra la información en logs en formato CSV. Si el cliente solicita un log de un sensor, el servidor enviará el paquete del último dato de dicho sensor solicitado
+
+El cliente (client.rb) puede enviar mensajes codificados, sean para la actualización y consulta de datos en los logs del archivo CSV.
+
+/Funcionamiento/ --------------------------------------------------------------------------------------------------------------------------------
+Ejecute el servidor en Ruby desde terminal (ruby server.rb). Si necesita cambiar la dirección o el puerto, cambielos dentro del código del (server.rb & client.rb). Después, ejecute el cliente en Ruby (ruby client.rb).
+
+/Notas/ -----------------------------------------------------------------------------------------------------------------------------------------
+El programa usa padding al lado izquierdo. Los datos de cadena usan padding de espacios " " y los numericos de "0".
+
+################################################################################################################################################
+/Description/ [EN]
+Both programs comunicate through sockets. Server (server.rb) receives codified messages from the client and writes the data in CSV logs. If client requests a log query, it will reply with the last found record.
+
+Client (client.rb) can send codified messages, to update or query from CSV logs file.
+
+/Funcionamiento/ --------------------------------------------------------------------------------------------------------------------------------
+Execute the server with Ruby (ruby server.py). If you need to change the socket's port or address change in code (server.rb & client.rb). Then execute the client in Ruby (ruby client.rb)
+
+/Notes/ -----------------------------------------------------------------------------------------------------------------------------------------
+Program works with left padding. strings have blanks " " and numeric have nulls "0".
