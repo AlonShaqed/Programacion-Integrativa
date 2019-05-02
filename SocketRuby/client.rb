@@ -16,7 +16,3 @@ def send_and_receive_to_socket(message)
 		return s.gets
 	end
 end
-
-#puts send_and_receive_to_socket "Client is here!!"
-send_to_socket codeUpdateString("sensor5", 0.9854)
-#send_to_socket codeObserverString("hsws", "sensor4")
