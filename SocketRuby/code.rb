@@ -1,3 +1,4 @@
+
 require 'date'
 
 def stringChecksum(string)
@@ -90,6 +91,3 @@ def codeFromLog(log, b=[8,8,6,8])
 	end
 	return false
 end
-
-#puts codeFromLog("hello,-0.4555,05:45:09,04-10-1945")
-#puts codeObserverString("hiw","sensor4")
