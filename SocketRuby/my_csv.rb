@@ -41,5 +41,3 @@ def findInFile(filepath, find)
 	end
 	return false
 end
-
-#puts list_to_csv([4,5,"hgga","gh","hgga"])
