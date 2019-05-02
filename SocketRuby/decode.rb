@@ -53,7 +53,6 @@ def decodeObserverString(string)
 	if string.is_a? String
 		local_checksum = stringChecksum(string[0,string.length-4])
 		received_sum = string[-4,4].to_i
-		puts "initial #{string[0]}, final #{string[-1]}"
 		if local_checksum == received_sum
 			string.downcase!
 			if string.length == 21
@@ -85,6 +84,3 @@ def decode_packet(string)
 		return false
 	end
 end
-
-#puts decodeUpdateString(codeUpdateString("senSor5", -0.9433))
-#puts decodeObserverString(codeObserverString("hiww","sensor5"))
