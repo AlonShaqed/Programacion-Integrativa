@@ -1,4 +1,3 @@
-
 require 'date'
 
 def stringChecksum(string)
