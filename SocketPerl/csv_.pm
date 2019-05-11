@@ -8,11 +8,7 @@ sub list_to_csv{
 	$string = "";
 	
 	foreach (@list){
-		if($_ == $list[-1]){
-			$string .= $_;
-		}else{
-			$string .= $_ . ",";
-		}
+		$string .= $_ . ",";
 	}
 	return $string;
 }
@@ -38,13 +34,13 @@ sub findInFile{
 		chomp $row;
 		if(index($row,$find) >= 0)
 		{
-			print "$row\n";
 			$found = $row; 
 		}
 	}
 
 	if($found ne '')
 	{
+		print "found: $found\n";
 		return $found;
 	}
 	return 'Not found';
