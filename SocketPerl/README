@@ -1,0 +1,26 @@
+#TcpServer & TcpClient#
+/Descripcion/ [ES]
+Ambos programas se comunican a traves de un socket. El servidor (tcpserver.pl) recibe mensajes codificados del cliente y registra la información en logs en formato CSV. Si el cliente solicita un log de un sensor, el servidor enviará el paquete del último dato de dicho sensor solicitado
+
+El cliente (tcpclient.pl) puede enviar mensajes codificados, sean para la actualización y consulta de datos en los logs del archivo CSV.
+
+/Funcionamiento/ --------------------------------------------------------------------------------------------------------------------------------
+Entre a los archivos 'decode.pm', 'tcpclient.pl' y 'tcpserver.pl' y cambien en la primera línea 'use lib ...' la direccion actual del directorio del programa. Ex.: 'use lib "ruta/al/directorio/"'.
+
+Ejecute el servidor en Perl desde terminal (perl tcpserver.pl). Si necesita cambiar la dirección o el puerto, cambielos dentro del código del (tcpserver.pl & tcpclient.pl). Después, ejecute el cliente en Perl (perl tcpclient.pl).
+
+/Notas/ -----------------------------------------------------------------------------------------------------------------------------------------
+El programa usa padding al lado izquierdo. Los datos de cadena usan padding de espacios " " y los numericos de "0".
+
+################################################################################################################################################
+/Description/ [EN]
+Both programs comunicate through sockets. Server (tcpserver.pl) receives codified messages from the client and writes the data in CSV logs. If client requests a log query, it will reply with the last found record.
+
+Client (tcpclient.pl) can send codified messages, to update or query from CSV logs file.
+
+/Funcionamiento/ --------------------------------------------------------------------------------------------------------------------------------
+Edit the files 'decode.pm', 'tcpclient.pl' and 'tcpserver.pl' and change the first line 'uselib...' to the current path to the program. Ex.: 'use lib "path/to/directory/"'.
+Execute the server with Perl (perl server.pl). If you need to change the socket's port or address change in code (tcpserver.pl & tcpclient.pl). Then execute the client in Perl (perl tcpclient.pl)
+
+/Notes/ -----------------------------------------------------------------------------------------------------------------------------------------
+Program works with left padding. strings have blanks " " and numeric have nulls "0".
