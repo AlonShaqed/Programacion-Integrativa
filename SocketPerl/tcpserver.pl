@@ -23,25 +23,26 @@ while(1)
 {
 	$client_socket = "";
 	$from_client = '';
+	print "Acepting...\n";
 	$client_socket = $socket->accept();
+	print "Acepted\n";
 	$client_socket->recv($from_client,1024);
-	
+	print "client: $from_client\n";
+
 	@packet = decode::decode_packet($from_client);
 	$length = @packet;
 	$" = ',';
-	print "pack: @packet, size: $length\n";
 	if($length != 0){
 		if($length == 3)
 		{
-			$line = csv_::findInFile($csv_::DATA_LOG);
-			if($line == 'Not found'){
+			$line = csv_::findInFile($csv_::DATA_LOG, $packet[1]);
+			if($line eq 'Not found'){
 				$toSend = code::codeUpdateString("notfound",0);
 			}else{
 				$toSend = code::codeFromLog($line);
 			}
 			$client_socket->send($toSend);
 		}
-		print "packet(0,-1): @packet[0..-1]\n";
 		csv_::writeToFile($packet[-1], csv_::list_to_csv(@packet[0..$#packet-1]));
 	}
 }
